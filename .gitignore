@@ -1,0 +1,46 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Build results
+build/
+dist/
+
+# Dependency directories
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# MongoDB data directory (if applicable)
+# data/
+
+# Express.js generated files (if applicable)
+# public/
+
+# React.js build output (if applicable)
+# client/build/
+
+# React.js npm package cache (if applicable)
+# client/node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# Environment variables file
+.env
