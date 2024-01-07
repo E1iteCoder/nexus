@@ -1,0 +1,34 @@
+/* Adjust logo size */
+.logo {
+  width: 10%;
+  height: auto;
+}
+
+/* Change link and button color to green */
+.login-link{
+    color:green;
+    font-weight: 300px; 
+    background: none;
+    border: none;
+  }
+
+.login-link:hover{
+    color: #85b544;
+
+}
+
+.login {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.sign-in-btn {
+    background-color: green;
+    border-color: green;
+  }
+  
+  .sign-in-btn:hover {
+    background-color: #85b544;
+    border-color: #85b544;
+  }
+  

@@ -1,0 +1,23 @@
+.d-flex {
+    display: flex;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+.social-link {
+    margin-right: 1.25em !important; /* Adjust the margin between icons if needed */
+    color: black !important;
+}
+
+.social-link:hover {
+    color: #85b544 !important;
+    cursor: pointer;
+}
+
+.social-text {
+    display: flex;
+    align-items: center; /* Align text vertically with icons */
+}
