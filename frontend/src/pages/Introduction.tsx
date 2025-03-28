@@ -1,28 +1,27 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import "../styles/Introduction.css";
 
-export default function Introduction(): JSX.Element{
+export default function Introduction(): JSX.Element {
   return (
-    <section id="intro-section">
-      <Container fluid="md" className="pb-4 pt-5 intro-section">
-        <Row>
-          <Col>
-            <h2>Introduction</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={8} className="mx-auto">
-            <p className="lead">
-              Welcome to NexusRead, where we strive to take your reading experience to new heights. Our platform offers a unique way to explore the imaginations and creations of writers and artists from all over the world, through a variety of mediums and formats.
-            </p>
-            <p>
-              Whether you're looking to discover new authors or genres, or simply want to enjoy your favourite stories in a fresh and innovative way, NexusRead has got you covered. Join us today and embark on a journey of endless possibilities.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+    <section className="intro-section">
+      <div className="intro-container">
+        <div className="intro-header">
+          <h2>Introduction</h2>
+        </div>
+        <div className="intro-content">
+          <p className="intro-lead">
+            Welcome to NexusRead, where we strive to take your reading
+            experience to new heights. Our platform offers a unique way to
+            explore the imaginations and creations of writers and artists from
+            all over the world, through a variety of mediums and formats.
+          </p>
+          <p>
+            Whether you're looking to discover new authors to connect with or genres or just
+            want to enjoy your favourite stories, NexusRead has got you covered. Join us 
+            today and embark on a journey of endless possibilities.
+          </p>
+        </div>
+      </div>
     </section>
   );
-};
-
+}
