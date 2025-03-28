@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/CarouselContent.css";
-import { Carousel } from "react-bootstrap";
 import BookModal from "./Modal";
 import BookCard from "./CardComponent";
 
@@ -78,52 +77,81 @@ export default function CarouselContent({
 }): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleModal = () => setIsOpen(!isOpen);
 
   const handleCardClick = (card: CardData) => {
     setSelectedCard(card);
     toggleModal();
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) =>
+      prev < chunkedCardData.length - 1 ? prev + 1 : 0
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) =>
+      prev > 0 ? prev - 1 : chunkedCardData.length - 1
+    );
+  };
+
   return (
-    <>
+    <div className="carousel-container">
       <h2 className="main-header mb-3">{title}</h2>
       <h5 className="sub-header">{subheading}</h5>
       <div className="py-4"></div>
-      <Carousel
-        interval={null}
-        prevLabel=""
-        nextLabel=""
-        prevIcon={<span className="carousel-control-prev-icon" />}
-        nextIcon={<span className="carousel-control-next-icon" />}
-        indicators={false}
-      >
-        {chunkedCardData.map((chunk, index) => (
-          <Carousel.Item key={index}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              {chunk.map((card, idx) => (
-                <div
-                  key={idx}
-                  style={{ flex: "1 1 30%" }}
-                  onClick={() => handleCardClick(card)}
-                >
-                  <div className="mx-auto book-card">
-                    <BookCard
-                      image={card.image}
-                      alt="book cover"
-                      title={""}
-                      text={""}
-                    />
+
+      <div className="custom-carousel">
+        <button
+          className="carousel-control prev"
+          onClick={prevSlide}
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+
+        <div className="carousel-inner">
+          {chunkedCardData.map((chunk, index) => (
+            <div
+              key={index}
+              className={`carousel-item ${
+                index === currentSlide ? "active" : ""
+              }`}
+            >
+              <div className="carousel-chunk">
+                {chunk.map((card, idx) => (
+                  <div
+                    key={idx}
+                    className="carousel-card-wrapper"
+                    onClick={() => handleCardClick(card)}
+                  >
+                    <div className="mx-auto book-card">
+                      <BookCard
+                        image={card.image}
+                        alt="book cover"
+                        title={""}
+                        text={""}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
+          ))}
+        </div>
+
+        <button
+          className="carousel-control next"
+          onClick={nextSlide}
+          aria-label="Next"
+        >
+          ›
+        </button>
+      </div>
+
       {selectedCard && (
         <BookModal
           author={selectedCard.author}
@@ -135,6 +163,6 @@ export default function CarouselContent({
           toggleModal={toggleModal}
         />
       )}
-    </>
+    </div>
   );
 }
