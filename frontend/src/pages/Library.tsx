@@ -1,26 +1,37 @@
 import React from "react";
+import "../styles/Library.css";
 import CarouselContent from "../components/CarouselContent";
 
-export default function Library() {
+interface LibraryProps {
+  username?: string;
+}
+
+export default function Library({ username = "Guest" }: LibraryProps): JSX.Element {
   return (
-    <div>
-      <div className="py-5"></div>
-      <h1 className="mx-4 my-5 text-center main-header">
-        Welcome, {/**Username **/}
-      </h1>
-      <div className="py-4"></div>
-      <div className="container-fluid">
-        <div className="py-4"></div>
+    <div className="library-page">
+      <div className="spacer-xl" />
+      <h1 className="main-header">Welcome, {username}</h1>
+      <div className="spacer-l" />
+
+      <div className="content-container">
+        <div className="spacer-l" />
         <CarouselContent
           title="NexusPicks"
           subheading="Find books you might like"
         />
-        <div className="py-5"></div>
-        <CarouselContent title="Recommended" subheading="Books you may like" />
-        <div className="py-5 m-3"></div>
-        <CarouselContent title="Explore" subheading="Try out a new book" />
+        <div className="spacer-xl" />
+        <CarouselContent
+          title="Recommended"
+          subheading="Books you may like"
+        />
+        <div className="spacer-xl" />
+        <CarouselContent
+          title="Explore"
+          subheading="Try out a new book"
+        />
       </div>
-      <div className="py-5 m-3"></div>
+
+      <div className="spacer-xl" />
     </div>
   );
 }

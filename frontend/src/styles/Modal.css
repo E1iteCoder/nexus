@@ -1,106 +1,123 @@
-/* Modal.css */
+/* Backdrop */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1050;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
+/* Modal window */
 .modal-content {
-  background: white;
-  border-radius: 8px;
-  width: 500px;
-  max-width: 90%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px; /* Added spacing from viewport edges */
+  background: #fff;
+  border-radius: 0.3rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  animation: fadeInScale 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
+/* Animation */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Header */
 .modal-header {
-  padding: 16px;
-  border-bottom: 1px solid #dee2e6;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .modal-title {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 500;
-  max-width: 80%; /* Prevent title overflow */
 }
 
+/* Close button */
 .close-btn {
   background: none;
   border: none;
   font-size: 1.5rem;
+  color: #000;
+  line-height: 1;
+  opacity: 0.5;
   cursor: pointer;
-  color: #6c757d;
-  padding: 0 8px;
-  line-height: 1; /* Fix vertical alignment */
 }
 
 .close-btn:hover {
-  color: #000;
+  opacity: 0.75;
 }
 
+/* Body */
 .modal-body {
-  padding: 16px;
-  display: flex; /* Maintain flex layout */
-  gap: 20px; /* Add spacing between columns */
+  padding: 1rem;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .modal-left {
   flex: 1;
   text-align: center;
-  min-width: 150px; /* Prevent image column collapse */
+  min-width: 150px;
 }
 
 .modal-right {
   flex: 2;
-  overflow: auto; /* Handle long content */
+  overflow: auto;
 }
 
 .modal-img {
   max-width: 100%;
-  height: auto;
   max-height: 300px;
-  object-fit: contain; /* Prevent image distortion */
+  object-fit: contain;
 }
 
 .modal-text {
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
+/* Footer */
 .modal-footer {
-  padding: 16px;
+  padding: 0.75rem 1rem;
   border-top: 1px solid #dee2e6;
   display: flex;
   justify-content: flex-end;
-  gap: 10px; /* Add spacing between buttons */
+  gap: 0.5rem;
 }
 
+/* Button */
 .read-btn {
   background-color: #28a745;
   color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
   font-size: 1rem;
-  white-space: nowrap; /* Prevent button text wrap */
+  cursor: pointer;
+  transition: background-color 0.15s ease;
 }
 
 .read-btn:hover {
   background-color: #218838;
 }
-
-/* Remove duplicate classes below this line */

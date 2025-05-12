@@ -1,23 +1,34 @@
-.d-flex {
-    display: flex;
-}
+/* SocialMedia.css */
 
-.social-icons {
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-}
-
-.social-link {
-    margin-right: 1.25em !important; /* Adjust the margin between icons if needed */
-    color: black !important;
-}
-
-.social-link:hover {
-    color: #85b544 !important;
-    cursor: pointer;
+.social-media {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .social-text {
-    display: flex;
-    align-items: center; /* Align text vertically with icons */
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;              /* equal spacing between icons */
+}
+
+.social-link {
+  color: #333;
+  font-size: 1.5rem;        /* makes sure the icon is a good tappable size */
+  transition: color 0.2s ease;
+}
+
+.social-link:hover {
+  color: #85b544;
+  cursor: pointer;
 }

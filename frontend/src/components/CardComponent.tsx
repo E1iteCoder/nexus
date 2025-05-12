@@ -19,7 +19,9 @@ export default function CardComponent({
       {image && <img src={image} alt={alt} className="card-image" />}
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
-        <p className="card-text">{text}</p>
+        <div className="text-wrapper">
+          <p className="card-text">{text}</p>
+        </div>
       </div>
     </div>
   );

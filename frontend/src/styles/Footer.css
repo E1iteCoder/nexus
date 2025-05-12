@@ -1,42 +1,61 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  background-color: #ffffff;
+  color: #333;
+  padding: 3rem 1rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  margin: 1rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: #317a87;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #85b544;
+}
+
+/* Stack vertically on small screens */
+@media (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
     align-items: center;
-    padding: 40px;
-    background-color: #ffffff;
-    color: #333;
   }
-  
-  .footer-logo-container,
-  .footer-social-container,
-  .footer-nav-container,
-  .footer-contact-container {
+
+  .footer-column {
     text-align: center;
   }
-  
-  .footer-nav-item {
-    margin-bottom: 20px;
-  }
-
-  .footer-link{
-    color: #333;
-  }
-
-  .footer-link:hover{
-    color: #85b544;
-  }
-  
-  img {
-    height: 50px;
-    margin-bottom: 20px;
-  }
-  
-  .footer-nav-container,
-  .footer-logo-container {
-    padding: 5%;
-  }
-  
-.company-information,
-.contact-information {
-  padding: 0;
 }

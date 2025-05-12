@@ -1,5 +1,5 @@
 import React from "react";
-import "../../frontend/styles/Mission.css";
+import "../styles/Mission.css";
 import MissionCard from "./CardComponent";
 
 export default function MissionStatement(): JSX.Element {

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Navbar.css";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";      // ← import it!
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Button from '@mui/material/Button';
@@ -22,7 +23,7 @@ export default function Navbar(): JSX.Element {
         <img
           className="nav-link"
           id="logo-nav"
-          src={"/pictures/logo.png"}
+          src={logo}
           alt="NexusRead logo"
         />
       </NavLink>

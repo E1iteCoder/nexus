@@ -1,64 +1,35 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/Login.css";
+import logo from "../assets/logo.png";      // ← import it!
+import "../styles/auth.css";
 
 type Props = {
   onFormSwitch: (formName: string) => void;
 };
 
-export default function Register(props: Props): JSX.Element {
+export default function Register({ onFormSwitch }: Props): JSX.Element {
   return (
-    <div className="d-flex align-items-center min-vh-100">
-      <div className="container">
-        <div className="text-center mb-5">
-          <img
-            className="mx-auto logo"
-            src={"/pictures/logo.png"}
+    <div className="auth-page">
+      <div className="auth-container">
+        <img
+            className="auth-logo"
+            src={logo}
             alt="NexusRead logo"
           />
-          <h2 className="h2 mt-3 mb-2">Create your account</h2>
-        </div>
-        <form>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              placeholder="name@example.com"
-            />
+        <h2 className="auth-title">Create your account</h2>
+        <form className="auth-form">
+          <div>
+            <label className="auth-label" htmlFor="email">Email address</label>
+            <input type="email" id="email" className="auth-input" placeholder="name@example.com" />
           </div>
-          <div className="mb-3">
-            <div className="d-flex justify-content-between">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-            </div>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="********"
-            />
+          <div>
+            <label className="auth-label" htmlFor="password">Password</label>
+            <input type="password" id="password" className="auth-input" placeholder="********" />
           </div>
-          <button type="submit" className="btn btn-primary w-100 sign-in-btn">
-            Create account
-          </button>
+          <button type="submit" className="auth-button">Sign Up</button>
         </form>
-        <div className="text-center mt-3">
-          <p className="mb-0">
-            Already have an account?{" "}
-            <button
-              type="button"
-              className="login-link"
-              onClick={() => props.onFormSwitch("SignIn")}
-            >
-              Login to your account
-            </button>
-          </p>
-        </div>
+        <button className="auth-link-button" onClick={() => onFormSwitch("signin")}>
+          Already have an account? Sign in
+        </button>
       </div>
     </div>
   );

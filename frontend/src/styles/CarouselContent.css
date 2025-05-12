@@ -1,43 +1,78 @@
+.carousel-container {
+  padding: 2rem 1rem;
+}
+
 .main-header {
-  padding-left: 2.5%;
-  padding-bottom: 0.5%;
-  font-style: normal;
+  margin: 0 0 0.5rem 2rem;
   font-weight: 400;
 }
 
 .sub-header {
-  padding-left: 2.5%;
+  margin: 0 0 1.5rem 2rem;
+  color: #666;
 }
+
+.custom-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-control {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 1rem;
+  color: #333;
+  user-select: none;
+}
+
+.carousel-control.prev {
+  margin-right: 0.5rem;
+}
+
+.carousel-control.next {
+  margin-left: 0.5rem;
+}
+
+.carousel-inner {
+  overflow: hidden;
+  flex: 1;
+}
+
+.carousel-item {
+  display: none;
+  width: 100%;       /* ← add this */
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel-chunk {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;  /* this will now work as expected */
+}
+
+.carousel-card-wrapper {
+  /* match the card’s width */
+  width: 250px;
+
+  /* prevent it from flex‑shrinking or growing */
+  flex: 0 0 250px;
+
+  /* hide anything that overflows */
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+/* BookCard sizing */
 .book-card {
-  width: 100%; 
-  height: auto; 
-  max-width: 240px; 
+  max-width: 240px;
 }
 
-.book-card img {
-  width: 100%; 
-  height: auto; 
-  object-fit: contain; 
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-image: none;
-  color: #000;
-}
-
-.carousel-control-prev-icon::before,
-.carousel-control-next-icon::before {
-  background-image: none;
-  color: #000;
-}
-
-.carousel-control-prev {
-  margin-top: -15px; 
-  margin-left: -30px;
-}
-
-.carousel-control-next{
-  margin-top: -15px;
-  margin-right: -35px;
-}
+/* Modal overrides (if any) */
+/* ... */

@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import Register from "../components/Register";
-import SignIn from "../components/SignIn";
+import SignIn from "../components/Signin";
 
 export default function Login() {
-  const [currentForm, setCurrentForm] = useState("login");
+ const [currentForm, setCurrentForm] = useState("signin");
 
-  const toggleForm = (formName: string) => {
-    setCurrentForm(formName === "SignIn" ? "login" : "SignIn");
-  };
+const toggleForm = (formName: string) => {
+  setCurrentForm(formName);
+};
+
+
 
   return (
     <div className="Log">
-      {currentForm === "login" ? (
-        <SignIn onFormSwitch={toggleForm} display={false} />
+      {currentForm === "signin" ? (
+        <SignIn onFormSwitch={toggleForm} />
       ) : (
         <Register onFormSwitch={toggleForm} />
       )}
-      <div className="py-5"></div>
     </div>
   );
 }

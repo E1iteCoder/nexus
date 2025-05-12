@@ -3,68 +3,42 @@ import "../styles/CarouselContent.css";
 import BookModal from "./Modal";
 import BookCard from "./CardComponent";
 
+// 1) Import your images from src/assets
+import demoBook1 from "../assets/demo-book.png";
+import demoBook2 from "../assets/demo-book2.png";
+import demoBook3 from "../assets/demo-book3.png";
+import bookCover from "../assets/Book Cover Template.png";
+import tsotCover from "../assets/TSOT.png";
+
 interface CardData {
+  title: string;
   author: string;
   description: string;
   image: string;
-  title: string;
   rating: number;
 }
 
-const cardData = [
-  {
-    title: "Demo Book",
-    author: "N/A",
-    image: "/pictures/demo-book.png",
-    description: "Lorem ipsum",
-    rating: 0,
-  },
-  {
-    title: "Book Cover",
-    author: "N/A",
-    image: "/pictures/Book Cover Template.png",
-    description: "Lorem ipsum",
-    rating: 0,
-  },
-  {
-    title: "Demo Book #2",
-    author: "N/A",
-    image: "/pictures/demo-book2.png",
-    description: "Lorem ipsum",
-    rating: 0,
-  },
-  {
-    title: "Demo Book #3",
-    author: "N/A",
-    image: "/pictures/demo-book3.png",
-    description: "Lorem ipsum",
-    rating: 0,
-  },
-  {
-    title: "Demo Book #3.5",
-    author: "N/A",
-    image: "/pictures/demo-book3.png",
-    description: "Lorem ipsum",
-    rating: 0,
-  },
-  {
-    title: "The Shadows of the Tree",
+const cardData: CardData[] = [
+  { title: "Demo Book",          author: "N/A", image: demoBook1, description: "Lorem ipsum", rating: 0 },
+  { title: "Book Cover",         author: "N/A", image: bookCover, description: "Lorem ipsum", rating: 0 },
+  { title: "Demo Book #2",       author: "N/A", image: demoBook2, description: "Lorem ipsum", rating: 0 },
+  { title: "Demo Book #3",       author: "N/A", image: demoBook3, description: "Lorem ipsum", rating: 0 },
+  { title: "Demo Book #3.5",     author: "N/A", image: demoBook3, description: "Lorem ipsum", rating: 0 },
+  { title: "The Shadows of the Tree",
     author: "NexusRead Originals",
-    image: "/pictures/TSOT.png",
-    description:
-      "This is the story of a teen from Ethiopia who becomes captivated by the legend of the mysterious blue glowing trees and their extraordinary fruit. Determined to find the tree, he stumbles upon its location by chance while watching a show. Fueled by curiosity, he embarks on a journey to reach the tree and finally taste its marvelous fruit. Consuming the fruit alters his life in ways he could never have imagined. Join him in this suspenseful and captivating first installment of The Shadows of the Tree series, as he navigates the intriguing aftermath of his encounter with the fruit.",
-    rating: 5,
+    image: tsotCover,
+    description: `This is the story of a teen from Ethiopia who becomes captivated by the legend of the mysterious blue glowing trees…`,
+    rating: 5
   },
-] as CardData[];
+];
 
-const chunkArray = (arr: CardData[], chunkSize: number) => {
-  const chunkedArr: CardData[][] = [];
-  let i = 0;
-  while (i < arr.length) {
-    chunkedArr.push(arr.slice(i, i + chunkSize));
-    i += chunkSize;
+// chunk helper
+const chunkArray = (arr: CardData[], size: number) => {
+  const chunks: CardData[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
   }
-  return chunkedArr;
+  return chunks;
 };
 const chunkedCardData = chunkArray(cardData, 3);
 
@@ -75,9 +49,9 @@ export default function CarouselContent({
   title: string;
   subheading: string;
 }): JSX.Element {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const toggleModal = () => setIsOpen(!isOpen);
 
@@ -86,23 +60,15 @@ export default function CarouselContent({
     toggleModal();
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev < chunkedCardData.length - 1 ? prev + 1 : 0
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev > 0 ? prev - 1 : chunkedCardData.length - 1
-    );
-  };
+  const nextSlide = () =>
+    setCurrentSlide((c) => (c < chunkedCardData.length - 1 ? c + 1 : 0));
+  const prevSlide = () =>
+    setCurrentSlide((c) => (c > 0 ? c - 1 : chunkedCardData.length - 1));
 
   return (
     <div className="carousel-container">
-      <h2 className="main-header mb-3">{title}</h2>
+      <h2 className="main-header">{title}</h2>
       <h5 className="sub-header">{subheading}</h5>
-      <div className="py-4"></div>
 
       <div className="custom-carousel">
         <button
@@ -114,11 +80,11 @@ export default function CarouselContent({
         </button>
 
         <div className="carousel-inner">
-          {chunkedCardData.map((chunk, index) => (
+          {chunkedCardData.map((chunk, i) => (
             <div
-              key={index}
+              key={i}
               className={`carousel-item ${
-                index === currentSlide ? "active" : ""
+                i === currentSlide ? "active" : ""
               }`}
             >
               <div className="carousel-chunk">
@@ -128,14 +94,12 @@ export default function CarouselContent({
                     className="carousel-card-wrapper"
                     onClick={() => handleCardClick(card)}
                   >
-                    <div className="mx-auto book-card">
-                      <BookCard
-                        image={card.image}
-                        alt="book cover"
-                        title={""}
-                        text={""}
-                      />
-                    </div>
+                    <BookCard
+                      image={card.image}
+                      alt={card.title}
+                      title={card.title}
+                      text={card.description}
+                    />
                   </div>
                 ))}
               </div>
@@ -154,12 +118,8 @@ export default function CarouselContent({
 
       {selectedCard && (
         <BookModal
-          author={selectedCard.author}
-          description={selectedCard.description}
-          image={selectedCard.image}
-          title={selectedCard.title}
+          {...selectedCard}
           isOpen={isOpen}
-          rating={selectedCard.rating}
           toggleModal={toggleModal}
         />
       )}

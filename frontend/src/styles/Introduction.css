@@ -1,21 +1,69 @@
+/* make the container two columns */
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+/* 1. Fill the viewport exactly (or remove if you want content‑driven height) */
+/* Outer section just holds the container */
 .intro-section {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    padding: 3.5% 0;
+  /* you can keep a background or padding here if you like */
+  width: 100%;
+  /* remove height/padding from here */
+}
+
+/* THIS is your two‑column flex container */
+.intro-container {
+  display: flex;             /* side by side */
+  width: 100vw;              /* full viewport width */
+  height: 100vh;             /* full viewport height */
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+
+/* each child takes half */
+.intro-text,
+.intro-visual {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical centering */
+  padding: 0;                /* remove extra gutters */
+  box-sizing: border-box;
+}
+
+/* tighten up headings and paragraphs */
+.intro-text h2 {
+  margin: 0 0 1rem 0;
+  font-size: 8rem;
+  line-height: 1.2;
+}
+.intro-text p {
+  margin: 0 2rem;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+/* scale your logo to fill its column */
+.intro-visual {
+  align-items: center;
+}
+.intro-logo {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* fallback to vertical on small screens */
+@media (max-width: 768px) {
+  .intro-container {
+    flex-direction: column;
   }
-  
-  .intro-section h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin: .15rem .15rem .15rem 0;
+  .intro-text,
+  .intro-visual {
+    height: auto;
+    width: 100%;
+    text-align: center;
   }
-  
-  .intro-section p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 2.5%;
-    padding-bottom: 2.5%;
-    color: #333;
+  .intro-logo {
+    max-width: 80%;
+    margin: 1rem auto;
   }
-  
+}
