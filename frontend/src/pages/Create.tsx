@@ -4,6 +4,7 @@ import FormControl from "../components/FormControl";
 import FormTextControl from "../components/FormTextControl";
 import FormDropdown from "../components/FormDropdown";
 import ProgressBar from "../components/ProgressBar";
+import { Book, IBook } from "../models/Book";
 import {
   languageOptions,
   genreOptions,
@@ -36,40 +37,54 @@ const Create: React.FC = () => {
   const [sampleFile, setSampleFile] = useState<File | null>(null);
   const [coverFile, setCoverFile] = useState<File | null>(null);
 
-  const handleCreate = async () => {
-    const requestBody = {
-      author,
-      title,
-      description,
-      genre,
-      type,
-      targetAudience,
-      language,
-    };
-
-    try {
-      const response = await fetch(
-        "mongodb+srv://kozorji:@cces1blere@d1ng@cluster0.pvq5m77.mongodb.net/?retryWrites=true&w=majority/create-publication",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
-
-      if (response.ok) {
-        // Successfully created publication
-        console.log("Publication created successfully");
-      } else {
-        // Handle errors
-        console.error("Failed to create publication");
-      }
-    } catch (error) {
-      console.error("Error during publication creation:", error);
-    }
+const handleCreate = async () => {
+  // 1) Gather all form‐state into the IBook shape
+  const bookData: IBook = {
+    author,
+    title,
+    description,
+    genre:       genre!,            // non‑null after validation
+    type:        type!,
+    targetAudience: targetAudience!,
+    language: language!,
+    publicationFile: publicationFile ?? undefined,                // optional File | undefined
+    sampleFile: sampleFile ?? undefined,
+    coverFile: coverFile ?? undefined,
   };
+  // 2) Instantiate the class
+  const newBook = new Book(bookData);
+
+
+ try {
+    const res = await fetch("mongodb+srv://kozorji:@cces1blere@d1ng@cluster0.pvq5m77.mongodb.net/?retryWrites=true&w=majority/create-publication", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBook.toJSON()),
+    });
+    if (!res.ok) throw new Error("Create failed");
+    console.log("Created via JSON!");
+  } catch (err) {
+    console.error("JSON upload error: ", err);
+  }
+
+  // 4) Try multipart upload with files
+  try {
+    const form = new FormData();
+    form.append("data", JSON.stringify(newBook.toJSON()));
+    if (publicationFile) form.append("publicationFile", publicationFile);
+    if (sampleFile)      form.append("sampleFile", sampleFile);
+    if (coverFile)       form.append("coverFile", coverFile);
+
+    const res2 = await fetch("/api/publications/multipart", {
+      method: "POST",
+      body: form,   // no Content-Type header
+    });
+    if (!res2.ok) throw new Error("Multipart create failed");
+    console.log("Created with files!");
+  } catch (err) {
+    console.error("Multipart upload error:", err);
+  }
+};  // ← Close handleCreate here
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsernameChecked(e.target.checked);

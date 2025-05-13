@@ -6,8 +6,8 @@ import SocialMediaNetwork from "./SocialMedia";
 export default function Footer(): JSX.Element {
   return (
     <>
-      <SocialMediaNetwork />
       <footer className="footer">
+        <SocialMediaNetwork />
         <div className="footer-container">
           <div className="footer-column">
             <h6 className="footer-title">NexusRead</h6>

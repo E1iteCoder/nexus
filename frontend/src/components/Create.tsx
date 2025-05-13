@@ -209,8 +209,8 @@ const Create: React.FC = () => {
                         control2={"TargetAudienceControl"}
                         options2={targetAudienceOptions}
                         value2={targetAudience}
-                        onChange={(value) => setTargetAudience(value)}
-                        onChange2={(value) => setLanguage(value)}
+                        onChange={(value) => setLanguage(value)}
+                        onChange2={(value) => setTargetAudience(value)}
                     />
                     <FormTextControl
                         title={"Description:"}

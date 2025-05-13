@@ -21,11 +21,15 @@
 .carousel-control {
   background: none;
   border: none;
-  font-size: 2rem;
-  cursor: pointer;
+  font-size: 5rem;
   padding: 0 1rem;
   color: #333;
   user-select: none;
+}
+
+.carousel-control:hover{
+  cursor: pointer;
+  color: #85b544;
 }
 
 .carousel-control.prev {
@@ -66,13 +70,13 @@
   /* hide anything that overflows */
   overflow: hidden;
 
-  cursor: pointer;
 }
 
-/* BookCard sizing */
-.book-card {
-  max-width: 240px;
+.carousel-card-wrapper:hover{
+  cursor: pointer;
+  transform: scale(1.1);
 }
+
 
 /* Modal overrides (if any) */
 /* ... */

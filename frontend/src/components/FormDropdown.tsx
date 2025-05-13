@@ -37,17 +37,20 @@ export default function FormDropdown({
                 <TextField
                     select
                     label={title}
-                    value={value || ""}
+                    value={value ?? ""}
                     required={required}
                     onChange={(e) => onChange(Number(e.target.value))}
                     fullWidth
                     variant="outlined"
                     className="labelContainer"
-                    id="labelContainer1"
+                    id={control}
                 >
+                    <MenuItem value="" disabled>
+                        -- Select --
+                    </MenuItem>
                     {options.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                        {option.label}
                         </MenuItem>
                     ))}
                 </TextField>
@@ -55,17 +58,20 @@ export default function FormDropdown({
                 <TextField
                     select
                     label={title2}
-                    value={value2 || ""}
-                    required={required}
+                    value={value2 ?? ""}
+                    required={required2}
                     onChange={(e) => onChange2(Number(e.target.value))}
                     fullWidth
                     variant="outlined"
                     className="labelContainer"
-                    id="labelContainer2"
+                    id={control2}
                 >
+                    <MenuItem value="" disabled>
+                        -- Select --
+                    </MenuItem>
                     {options2.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                        {option.label}
                         </MenuItem>
                     ))}
                 </TextField>
