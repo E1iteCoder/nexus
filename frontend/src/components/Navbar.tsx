@@ -24,7 +24,7 @@ export default function Navbar(): JSX.Element {
           className="nav-link"
           id="logo-nav"
           src={logo}
-          alt="NexusRead logo"
+          alt="Nexus logo"
         />
       </NavLink>
       <ul className="nav-links">

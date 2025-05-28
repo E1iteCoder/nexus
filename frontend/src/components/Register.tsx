@@ -13,7 +13,7 @@ export default function Register({ onFormSwitch }: Props): JSX.Element {
         <img
             className="auth-logo"
             src={logo}
-            alt="NexusRead logo"
+            alt="Nexus logo"
           />
         <h2 className="auth-title">Create your account</h2>
         <form className="auth-form">

@@ -10,9 +10,9 @@ export default function Footer(): JSX.Element {
         <SocialMediaNetwork />
         <div className="footer-container">
           <div className="footer-column">
-            <h6 className="footer-title">NexusRead</h6>
+            <h6 className="footer-title">Nexus</h6>
             <p>
-              NexusRead is a startup company that focuses on elevated reading,
+              Nexus is a startup company that focuses on elevated reading,
               where people can mainstream their imagination as creators.
             </p>
           </div>
@@ -31,7 +31,7 @@ export default function Footer(): JSX.Element {
           <div className="footer-column">
             <h6 className="footer-title">Contact</h6>
             <p>Pflugerville, TX 78660, US</p>
-            <p>nexusread1@gmail.com</p>
+            <p>Nexus1@gmail.com</p>
             <p>+1 512 587 0501</p>
           </div>
         </div>

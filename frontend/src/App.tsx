@@ -10,9 +10,9 @@ export default function App() {
     <div className="App">
       <Hero
         title="Welcome to"
-        subtitle="NexusRead"
+        subtitle="Nexus"
         imageSrc={Logo}
-        altText="NexusRead main logo"
+        altText="Nexus main logo"
       />
       <Introduction />
     </div>

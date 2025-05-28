@@ -25,7 +25,7 @@ const cardData: CardData[] = [
   { title: "Demo Book #3",       author: "N/A", image: demoBook3, description: "Lorem ipsum", rating: 0 },
   { title: "Demo Book #3.5",     author: "N/A", image: demoBook3, description: "Lorem ipsum", rating: 0 },
   { title: "The Shadows of the Tree",
-    author: "NexusRead Originals",
+    author: "Nexus Originals",
     image: tsotCover,
     description: `This is the story of a teen from Ethiopia who becomes captivated by the legend of the mysterious blue glowing trees…`,
     rating: 5

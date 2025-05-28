@@ -28,7 +28,7 @@ export default function BioCard(): JSX.Element {
     <section className="bio-section">
       <div className="bio-container">
         <div className="bio-header">
-          <h2>The Minds Behind NexusRead</h2>
+          <h2>The Minds Behind Nexus</h2>
           <p>
             We are a team of highly dedicated and motivated individuals that are driven to give a platform of expression to creative thinkers.
           </p>

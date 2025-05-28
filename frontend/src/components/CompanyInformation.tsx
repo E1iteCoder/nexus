@@ -8,10 +8,10 @@ export default function CompanyInfoColumn(): JSX.Element {
                 <Grid container marginTop="3">
                     <Grid item md={4} lg={4} xl={3} xs={12} className="mx-auto mb-4">
                         <Typography variant="h6" component="div" className="text-uppercase fw-bold mb-4">
-                            NexusRead
+                            Nexus
                         </Typography>
                         <Typography variant="body1">
-                            NexusRead is a startup company that focuses on elevated reading,
+                            Nexus is a startup company that focuses on elevated reading,
                             where people can mainstream their imagination as creators
                         </Typography>
                     </Grid>

@@ -3,9 +3,9 @@ import "../styles/SocialMedia.css";
 import { Twitter, Instagram, LinkedIn } from "@mui/icons-material";
 
 const links = [
-  { href: "https://twitter.com/nexusread", icon: <Twitter />, label: "Twitter" },
-  { href: "https://instagram.com/nexusread", icon: <Instagram />, label: "Instagram" },
-  { href: "https://linkedin.com/company/nexusread", icon: <LinkedIn />, label: "LinkedIn" },
+  { href: "https://twitter.com/Nexus", icon: <Twitter />, label: "Twitter" },
+  { href: "https://instagram.com/Nexus", icon: <Instagram />, label: "Instagram" },
+  { href: "https://linkedin.com/company/Nexus", icon: <LinkedIn />, label: "LinkedIn" },
 ];
 
 export default function SocialMedia(): JSX.Element {

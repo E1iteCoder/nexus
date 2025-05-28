@@ -7,7 +7,7 @@ export default function AboutUs() {
   return (
     <div>
       <Landing />
-      <h1 className="mx-5 p-5">About NexusRead</h1>
+      <h1 className="mx-5 p-5">About Nexus</h1>
       <MissionStatement />
       <div className="py-5"></div>
       <BioCard />

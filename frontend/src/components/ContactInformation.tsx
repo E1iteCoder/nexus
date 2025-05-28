@@ -29,7 +29,7 @@ export default function ContactInformation(): JSX.Element {
                     </Typography>
                     <Typography>
                         <MailIcon />
-                        nexusread1@gmail.com
+                        Nexus1@gmail.com
                     </Typography>
                     <Typography>
                         <PhoneIcon />
